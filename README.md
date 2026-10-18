@@ -2,6 +2,16 @@
 
 **NOTES** : For now, I'll just do some research on my board and then try to take precautions to avoid bricking my only device that I have lying around.
 
+### SPECS
+
+```
+SoC : Qualcomm Snapdragon 410 (MSM8916)
+RAM : 512M LPDDR3
+Storage : 4G eMMC
+Cellular : Integrated 4G LTE Cat-4
+Wireless : 802.11b/g/n 2.4 GHz + Bluetooth 4.0
+```
+
 ```bash
 # PCB Silk
 # FY_UZ801_V3.0
