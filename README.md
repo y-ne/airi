@@ -20,3 +20,7 @@ adb devices -l
 # List of devices attached
 #0123456789ABCDEF       device product:msm8916_32_512 model:UZ801 device:msm8916_32_512 transport_id:3
 ```
+
+### SITES
+
+https://openstick.org/boards/uz801/flashing/
