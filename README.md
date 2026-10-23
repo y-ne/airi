@@ -26,6 +26,7 @@ adb devices -l
 this is the sites i'm refering to
 
 https://openstick.org/boards/uz801/flashing/
+
 https://wvthoog.nl/openstick/
 
 ### TOOLS
@@ -46,6 +47,9 @@ python3-dev
 python3-pip
 liblzma-dev
 git
+
+# EDL (purge)
+modemmanager
 ```
 EDL
 
@@ -61,8 +65,49 @@ python3 -m venv .venv
 pip install -r requirements.txt
 ```
 
+UDEV Rules
+
+```bash
+sudo tee /etc/udev/rules.d/51-android-msm.rules << 'EOF'
+SUBSYSTEM=="usb", ATTR{idVendor}=="05c6", ATTR{idProduct}=="9008", MODE="0666", GROUP="plugdev"
+SUBSYSTEM=="usb", ATTR{idVendor}=="05c6", ATTR{idProduct}=="9091", MODE="0666", GROUP="plugdev"
+SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="d00d", MODE="0666", GROUP="plugdev"
+EOF
+
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+```
+
 ### BACKUP
 
 ```bash
+# DUMP Partition with EDL
 
+# Primary
+python3 edl.py r gpt gpt_backup.bin
+
+# Modem Calibration
+python3 edl.py r modemst1 modemst1.bin
+python3 edl.py r modemst2 modemst2.bin
+python3 edl.py r fsg fsg.bin
+python3 edl.py r fsc fsc.bin
+
+# Boot & Recovery
+python3 edl.py r boot boot_stock.bin
+python3 edl.py r aboot aboot_stock.bin
+
+# full eMMC
+python3 edl.py rl my_dongle_full_dump/
+```
+
+### Restore (if cellular fail)
+
+put modem on EDL Mode
+
+```bash
+python3 edl.py w modemst1 modemst1.bin
+python3 edl.py w modemst2 modemst2.bin
+python3 edl.py w fsg fsg.bin
+python3 edl.py w fsc fsc.bin
+python3 edl.py reset
 ```
