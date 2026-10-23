@@ -23,4 +23,46 @@ adb devices -l
 
 ### SITES
 
+this is the sites i'm refering to
+
 https://openstick.org/boards/uz801/flashing/
+https://wvthoog.nl/openstick/
+
+### TOOLS
+
+I'm using Ubuntu 26 so this is what we need
+
+Packages
+
+```
+# ADB and Fastboot
+android-tools-adb
+android-tools-fastboot
+
+# EDL
+adb
+fastboot
+python3-dev
+python3-pip
+liblzma-dev
+git
+```
+EDL
+
+```bash
+sudo systemctl stop ModemManager
+sudo systemctl disable ModemManager
+
+git clone https://github.com/bkerler/edl.git
+cd edl
+git submodule update --init --recursive
+python3 -m venv .venv
+. .venv/bin/activate
+pip install -r requirements.txt
+```
+
+### BACKUP
+
+```bash
+
+```
