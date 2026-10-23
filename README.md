@@ -111,3 +111,28 @@ python3 edl.py w fsg fsg.bin
 python3 edl.py w fsc fsc.bin
 python3 edl.py reset
 ```
+
+### Firmware
+
+Firmware based on `Wim van 't Hoog` 's Debian Bookworm build.
+
+https://download.wvthoog.nl/projects/security/openstick/openstick-uz801-v3.0.zip
+
+then just ran the `./flash.sh` command to flash it onto eMMC.
+
+### Credentials
+
+Username : user
+Password : 1
+RNDIS : 192.168.200.1
+WiFi : 192.168.100.1
+
+### Connect to WLAN
+
+```bash
+nmcli connection delete hotspot
+sudo nmcli dev wifi connect "SSID" password "PASSWORD"
+
+# Check if connected
+ip show a wlan0
+```
