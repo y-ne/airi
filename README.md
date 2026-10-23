@@ -123,8 +123,11 @@ then just ran the `./flash.sh` command to flash it onto eMMC.
 ### Credentials
 
 Username : user
+
 Password : 1
+
 RNDIS : 192.168.200.1
+
 WiFi : 192.168.100.1
 
 ### Connect to WLAN
